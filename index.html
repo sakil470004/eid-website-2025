@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eid Mubarak Coders!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath d='M96 64c0 30-24 54-54 54 18-10 30-30 30-54s-12-44-30-54c30 0 54 24 54 54z' fill='%23FDE68A'/%3E%3Cg%3E%3Crect x='60' y='70' width='8' height='18' rx='3' fill='%23232946'/%3E%3Ccircle cx='64' cy='70' r='5' fill='%23FDE68A'/%3E%3C/g%3E%3Cg%3E%3Cpolygon points='64,32 67,42 78,42 69,48 72,58 64,52 56,58 59,48 50,42 61,42' fill='%23F59E42'/%3E%3C/g%3E%3C/svg%3E">
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(135deg, #18122B 0%, #393053 100%);
+            color: #F7EFE5;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #232946 60%, #393053 100%);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Animated Eid Mubarak SVG moon glow */
+        #moon {
+            /* Remove old drop-shadow and add animated color to match header background */
+            animation: moonPulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes moonPulse {
+
+            0%,
+            100% {
+                fill: #232946;
+            }
+
+            50% {
+                fill: #393053;
+            }
+        }
+
+        #star-group {
+            transform-origin: 64px 42px;
+            animation: starTwinkle 1.5s infinite linear;
+        }
+
+        @keyframes starTwinkle {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+                transform: rotate(20deg);
+            }
+        }
+
+        /* Responsive SVG size */
+        #eid-svg {
+            width: 7rem;
+            height: 7rem;
+            max-width: 90vw;
+            margin-bottom: 1rem;
+        }
+
+        /* Jokes Section */
+        #jokes p {
+            background: linear-gradient(90deg, #232946 60%, #393053 100%);
+            color: #F7EFE5;
+            border-left: 6px solid #FDE68A;
+            box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.17);
+        }
+
+        #jokes p:hover {
+            background: #393053;
+            color: #FDE68A;
+            border-left: 6px solid #F59E42;
+        }
+
+        /* Footer */
+        footer {
+            background: #232946;
+            color: #F7EFE5;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+            box-shadow: 0 -8px 32px 0 rgba(31, 38, 135, 0.17);
+        }
+
+        /* Animated floating moon in background */
+        .floating-moon {
+            position: fixed;
+            top: 10vh;
+            right: 5vw;
+            width: 80px;
+            height: 80px;
+            z-index: 0;
+            opacity: 0.25;
+            pointer-events: none;
+            animation: floatMoon 8s ease-in-out infinite;
+        }
+
+        @keyframes floatMoon {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.08);
+            }
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 600px) {
+            header {
+                border-radius: 0 0 1.5rem 1.5rem;
+            }
+
+            footer {
+                border-radius: 1.5rem 1.5rem 0 0;
+            }
+
+            #eid-svg {
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-center text-gray-800">
+    <!-- Eid Music -->
+    <audio autoplay loop volume="0.1" id="eid-audio">
+        <source src="./audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Header -->
+    <header class="py-10 bg-yellow-100 shadow-lg">
+        <!-- New Animated Eid Mubarak SVG Logo -->
+        <svg id="eid-svg" class="mx-auto mb-4" width="128" height="128" viewBox="0 0 128 128" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <!-- New Crescent Moon -->
+            <path id="moon" d="M96 64c0 30-24 54-54 54 18-10 30-30 30-54s-12-44-30-54c30 0 54 24 54 54z"
+                fill="#FDE68A" />
+            <!-- Mosque silhouette (ellipse removed for transparent background) -->
+            <g id="mosque">
+                <rect x="48" y="80" width="32" height="20" rx="6" fill="#393053" />
+                <rect x="60" y="70" width="8" height="18" rx="3" fill="#232946" />
+                <circle cx="64" cy="70" r="5" fill="#FDE68A" />
+            </g>
+            <!-- Star -->
+            <g id="star-group">
+                <polygon id="star" points="64,32 67,42 78,42 69,48 72,58 64,52 56,58 59,48 50,42 61,42"
+                    fill="#F59E42" />
+            </g>
+            <!-- Eid Text Removed -->
+        </svg>
+        <h1 class="text-4xl md:text-6xl text-green-600 font-bold">Eid Mubarak, Coders! 🧑‍💻🌙</h1>
+        <p class="text-xl text-gray-400 font-bold mt-2 ">May your code always compile & your lamb be bug-free 🐑✨</p>
+    </header>
+
+    <!-- Jokes Section -->
+    <section class="my-10 px-4">
+        <h2 class="text-3xl text-pink-500 mb-4">😂 Eid Coding Jokes</h2>
+        <div id="jokes" class="space-y-4 text-lg">
+            <!-- Jokes will appear here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-gray-800 text-white">
+        <p>Built with ❤️ for Eid al-Adha by a fellow coder Mynul.</p>
+    </footer>
+
+    <!-- Stars & Moon -->
+    <script>
+        // Generate stars
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            document.body.appendChild(star);
+        }
+
+        // Coding-Eid Jokes
+        const jokes = [
+            "Why do programmers celebrate Eid with semicolons?\nBecause they know where the line ends.",
+            "How do coders do Qurbani?\nThey use a lamb-da function! 🐑",
+            "What's a developer's favorite Eid meat?\nBug-free mutton! 🐐",
+            "Eid Tip: Never console.log your Eidi amount. Hackers are watching.",
+            "Why did the developer refuse to go to the Eid party?\nToo many callbacks!"
+        ];
+
+        const jokesContainer = document.getElementById('jokes');
+        jokes.forEach(joke => {
+            const p = document.createElement('p');
+            p.textContent = joke;
+            p.className = "bg-white p-4 rounded shadow-md hover:bg-yellow-100 transition";
+            jokesContainer.appendChild(p);
+        });
+
+        // Set audio volume to 10%
+        document.addEventListener('DOMContentLoaded', function () {
+            const audio = document.getElementById('eid-audio');
+            if (audio) audio.volume = 0.1;
+        });
+    </script>
+
+    <!-- Floating background moon -->
+    <svg class="floating-moon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 40c0 13.25-10.75 24-24 24 8.5-4 14-12.5 14-24s-5.5-20-14-24c13.25 0 24 10.75 24 24z"
+            fill="#FDE68A" />
+    </svg>
+</body>
+
+</html>
