@@ -15,6 +15,7 @@
             background: linear-gradient(135deg, #18122B 0%, #393053 100%);
             color: #F7EFE5;
             overflow-x: hidden;
+            padding-bottom: 5rem;
         }
 
         header {
@@ -113,6 +114,11 @@
             border-top-left-radius: 2rem;
             border-top-right-radius: 2rem;
             box-shadow: 0 -8px 32px 0 rgba(31, 38, 135, 0.17);
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            z-index: 10;
         }
 
         /* Animated floating moon in background */
@@ -160,8 +166,8 @@
 
 <body class="text-center text-gray-800">
     <!-- Eid Music -->
-    <audio autoplay loop volume="0.1" id="eid-audio">
-        <source src="./audio.mp3" type="audio/mpeg">
+    <audio autoplay loop id="eid-audio" style="display:none">
+        <source src="./audio.mp3" type="audio/mp3">
         Your browser does not support the audio tag.
     </audio>
 
@@ -231,11 +237,20 @@
             jokesContainer.appendChild(p);
         });
 
-        // Set audio volume to 10%
-        document.addEventListener('DOMContentLoaded', function () {
+        // Set audio volume to 10% and force play on load using defer
+        function playEidAudio() {
             const audio = document.getElementById('eid-audio');
-            if (audio) audio.volume = 0.1;
-        });
+            if (audio) {
+                audio.volume = 0.1;
+                audio.play().catch(() => {
+                    // Optionally, show a play button if needed
+                });
+            }
+        }
+        // Use window.onload for guaranteed DOM readiness
+        window.onload = function() {
+            playEidAudio();
+        }
     </script>
 
     <!-- Floating background moon -->
